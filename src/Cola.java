@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 public class Cola {
     Scanner read = new Scanner(System.in);
-    private static final int Max_C = 100;
-    int C[] = new int[Max_C];
+    int C[];
     int e, s, tam;
 
     public Cola(int t) {
         tam = t;
+        C= new int [tam];
         e = 0;
         s = 0;
     }
