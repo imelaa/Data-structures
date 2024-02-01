@@ -14,7 +14,7 @@ public class Circ_Queue {
 
     public int enqueue() {
         if (fullCC() == 1) {
-            System.out.println("The  Queue is Full");
+            System.out.println("The Queue is Full");
             return -1;
         } else {
             int enqueueValue=CC[e];
@@ -26,7 +26,7 @@ public class Circ_Queue {
     public int dequeue() {
    
         if (emptyCC() == 1) {
-            System.out.println("The  Queue is Empty");
+            System.out.println("The Queue is Empty");
             return -1;
         } else {
             int dequeueValue=CC[s];
@@ -50,4 +50,11 @@ public class Circ_Queue {
 
     }
 
-}
+    public void show(){
+        if (emptyCC()==1){
+            System.out.println("The Queue is Empty");
+        }else{
+            for(int i=s;i<e;i++){
+        System.out.println(CC[i]+" ");
+    }}
+}}
