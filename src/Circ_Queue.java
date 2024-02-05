@@ -20,12 +20,19 @@ public class Circ_Queue {
         } else {
             last_oper = 1;
             System.out.print("\nEnter the element to be added : ");
+
+            while (!read.hasNextInt()) {
+                System.out.println("Invalid input. Please enter an integer.");
+                System.out.print("Enter the element to be added : ");
+                read.next(); // Limpiar el búfer del Scanner
+            }
+
             int enqueueValue = read.nextInt();
             CC[e] = enqueueValue;
             e++;
             if (e == size)
                 e = 0;
-            System.out.println("data enqueued correctly");
+            System.out.println("\nData enqueued correctly");
 
         }
     }
@@ -42,7 +49,7 @@ public class Circ_Queue {
             s++;
             if (s == size)
                 s = 0;
-            System.out.println("data dequeued: " + dequeueValue);
+            System.out.println("Data dequeued: " + dequeueValue);
             return dequeueValue;
         }
 
@@ -61,18 +68,11 @@ public class Circ_Queue {
         if (emptyCQ() == 1) {
             System.out.println("The Queue is Empty");
         } else {
-            if (s <= e || fullCQ() == 1) { // Si la cola no se ha llenado o si esta llena
-                for (int i = s; i < e; i++) {
-                    System.out.println(CC[i] + " ");
-                }
-                for (int i = 0; i < e; i++) {
-                    System.out.println(CC[i] + " ");
-                }
-            } else { // Si la cola volvio al princpio
-                for (int i = s; i < e; i++) {
-                    System.out.println(CC[i] + " ");
-                }
-            }
+            int current = s;
+            do {
+                System.out.println(CC[current] + " ");
+                current = (current + 1) % size;
+            } while (current != e);
         }
     }
 
