@@ -68,10 +68,13 @@ public class Circ_Queue {
         if (emptyCQ() == 1) {
             System.out.println("The Queue is Empty");
         } else {
-            int current = s;
+            int current = s; // Posiciona current en la salida
             do {
                 System.out.println(CC[current] + " ");
-                current = (current + 1) % size;
+                current = (current + 1) % size; // avanza a la siguiente posicion de la cola, % sirve pq si llega al
+                                                // final del tamaño pero no esta ahi la entrada se devuelve al principio
+                                                // del array para seguir en el bucle do,while hasta que current este
+                                                // posicionado en la entrada
             } while (current != e);
         }
     }
@@ -80,12 +83,25 @@ public class Circ_Queue {
         Scanner read = new Scanner(System.in);
         int size, opt;
         System.out.println("Give the size");
+
+        while (!read.hasNextInt()) {
+            System.out.println("Invalid input. Please enter an integer.");
+            System.out.print("Enter the size : ");
+            read.next(); // Limpiar el búfer del Scanner
+        }
         size = read.nextInt();
+
         Circ_Queue obj = new Circ_Queue(size);
 
         do {
             System.out.println("Choose an action\n  1.ENQUEUE - 2.DEQUEUE - 3.SHOW - 0.EXIT");
+
+            while (!read.hasNextInt()) {
+                System.out.print("Invalid input. Please enter an integer. Choose an action\n  1.ENQUEUE - 2.DEQUEUE - 3.SHOW - 0.EXIT ");
+                read.next(); // Limpiar el búfer del Scanner
+            }
             opt = read.nextInt();
+
             switch (opt) {
                 case 1:
                     System.out.println("ENQUEUE");
