@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 public class Stack {
     Scanner read = new Scanner(System.in);
-    private static final int Max_P = 100;
-    int P[] = new int[Max_P];
+    int P[];
     int tope, tam;
 
     public Stack(int t) {
         tam = t;
+        P =new int [tam];
         tope = 0;
     }
 

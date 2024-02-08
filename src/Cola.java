@@ -7,7 +7,7 @@ public class Cola {
 
     public Cola(int t) {
         tam = t;
-        C= new int [tam];
+        C = new int[tam];
         e = 0;
         s = 0;
     }
@@ -42,8 +42,7 @@ public class Cola {
     }
 
     public int vacia() {
-        // ? Es el operador ternario, que funciona como un "if-else" en una sola línea.
-        // : Separa las dos opciones del operador ternario.
+
         return (e == s) ? 1 : 0;
     }
 
@@ -64,10 +63,20 @@ public class Cola {
         int tam;
         int opt;
         System.out.println("Give the size");
+        while (!read.hasNextInt()) {
+        System.out.println("Invalid input. Please enter an integer.");
+        System.out.print("Enter the size : ");
+        read.next(); // Limpiar el búfer del Scanner
+        }
+
         tam = read.nextInt();
         Cola A = new Cola(tam);
         do {
             System.out.println("Choose an action\n  1.ENQUEUE - 2.DEQUEUE - 3.SHOW - 0.EXIT");
+            while (!read.hasNextInt()) {
+            System.out.print("Invalid input. Please enter an integer. Choose an action\n  1.ENQUEUE - 2.DEQUEUE - 3.SHOW - 0.EXIT ");
+            read.next(); // Limpiar el búfer del Scanner
+            }
             opt = read.nextInt();
             switch (opt) {
                 case 1:
