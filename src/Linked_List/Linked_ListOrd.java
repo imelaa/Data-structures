@@ -50,20 +50,20 @@ public class Linked_ListOrd {
         Nodo ant = null;
         Nodo aux = first;
 
-        while (aux != null && dato != aux.info) { //Recorre toda la lista hasta encontrar  el nodo a borrar
+        while (aux != null && dato != aux.info) { //Recorre toda la lista hasta encontrar el nodo a borrar
             ant = aux;
             aux = aux.liga;
         }
 
         if (aux == null) { //Si el elemento no esta en la lista
-            System.out.println("El elemento " + dato + " no está en la lista");
+            System.out.println("El elemento (" + dato + ") no está en la lista");
             return -1;
         }
 
         ant.liga = aux.liga; //Mueve el apuntador anterior al siguiente para saltar el que se elimina
-        System.out.println("Elemento " + dato + " eliminado correctamente");
+        System.out.println("Elemento (" + dato + ") eliminado correctamente");
 
-        if (aux == last) {
+        if (aux == last) { //Si el elemento a eliminar es el unico que queda en la lista
             last = ant;
         }
         return dato;
@@ -76,7 +76,6 @@ public class Linked_ListOrd {
             aux = aux.liga;
         }
     }
-
     public static void main(String[] args) {
         Linked_ListOrd list = new Linked_ListOrd();
         list.insertarOrd(1);
@@ -84,7 +83,7 @@ public class Linked_ListOrd {
         list.insertarOrd(6);
         list.insertarOrd(7);
         list.showOrd();
-        list.deleteOrd(16);
+        list.deleteOrd(5);
         list.showOrd();
     }
 }

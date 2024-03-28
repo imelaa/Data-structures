@@ -1,103 +1,46 @@
-
-import java.util.Scanner;
-
 public class Stack {
-    Scanner read = new Scanner(System.in);
-    int P[];
-    int tope, tam;
+    public int tope, size;
+    int S[] = new int[100];
 
-    public Stack(int t) {
-        tam = t;
-        P =new int [tam];
+    public Stack(int s) {
+        size = s;
         tope = 0;
     }
 
-    public void push() {
-
-        if (llena() == 0) {
-            System.out.print("Give me the value: ");
-            int dato = read.nextInt();
-            P[tope] = dato;
-            tope++;
-            System.out.println("data inserted correctly");
-        } else {
-
-            System.out.print("The stack is full\n");
+    public void push(int dato) {
+        if (isFull() == 1)
             return;
-        }
+        S[tope] = dato;
+        tope++;
     }
 
     public int pop() {
-        if (vacia() == 0) {
-            int PoppedValue = P[--tope];
-            System.out.println("Elemento eliminado: " + PoppedValue);
-            return PoppedValue;
-        } else {
-            System.out.println("The stack is empty");
+        if (isFull() == 1)
             return -1;
-
-        }
-
+        int eliminado;
+        tope--;
+        eliminado = S[tope];
+        return eliminado;
     }
 
-    public int vacia() {
-        // ? Es el operador ternario, que funciona como un "if-else" en una sola línea.
-        // : Separa las dos opciones del operador ternario.
-        return (tope == 0) ? 1 : 0;
+    public int isEmpty() {return (tope == 0) ? 1 : 0;}
+
+    public int isFull() {return (tope == size) ? 1 : 0;}
+
+    public void showS() {
+        for (int i = 0; i < tope; i++)
+            System.out.print(S[i] + " ");
+        System.out.println();
     }
-
-    public int llena() {
-        return (tope == tam) ? 1 : 0;
-    }
-
-    public void mostrar() {
-        if (vacia() == 0) {
-            for (int i = 0; i < tope; i++)
-                System.out.println(P[i] + " ");
-        } else
-            System.out.println("The stack is empty");
-    }
-
-    public static void main(String[] args) {
-        Scanner read = new Scanner(System.in);
-        int opt;
-        int tama;
-        System.out.println("Dame el tamaño: ");
-        tama = read.nextInt();
-        Stack A = new Stack(tama);
-
-        do {
-            System.out.println("1.PUSH - 2.POP - 3.MOSTRAR - 0.EXIT");
-            opt = read.nextInt();
-
-            switch (opt) {
-                case 1:
-                    System.out.println("Elegiste PUSH\n");
-                    A.push();
-                    break;
-
-                case 2:
-                    System.out.println("Elegiste POP ");
-                    A.pop();
-                    break;
-
-                case 3:
-                    System.out.println("Elegiste MOSTRAR");
-                    A.mostrar();
-                    break;
-
-                case 0:
-                    System.out.println("Elegiste EXIT");
-                    System.exit(0);
-                    break;
-
-                default:
-                    System.out.println("Option invalid");
-                    break;
-            }
-        } while (opt != 0);
-
-        read.close();
+    public static void main(String args[]) {
+        Stack que = new Stack(5);
+        que.push(5);
+        que.push(8);
+        que.push(3);
+        que.showS();
+        int x = que.pop();
+        System.out.println("Dato eliminado = " + x);
+        que.showS();
 
     }
 

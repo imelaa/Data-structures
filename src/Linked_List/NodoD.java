@@ -6,7 +6,7 @@ public class NodoD {
     NodoD last;
 
 public NodoD(int info){
-    info = info;
+    this.info = info;
     next=null;
     last = null;
 }
